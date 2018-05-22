@@ -1,3 +1,79 @@
-<p>
-  m1 works!
-</p>
+
+<div class="col-mg-8">
+  <h4 style="color: Crimson;">常用模块</h4>
+  <br>
+  <table  class="table table-bordered">
+    <tbody>
+    <tr>
+      <th style="vertical-align: top">NgModule</th>
+      <th style="vertical-align: top">导入自</th>
+      <th style="vertical-align: top">为何使用</th>
+    </tr>
+    <tr>
+      <td>BrowserModule</td>
+      <td><code>@angular/platform-browser</code></td>
+      <td>当你想要在浏览器中运行应用时( 仅在根模块中导入 )</td>
+    </tr>
+    <tr>
+      <td>CommonModule</td>
+      <td><code>@angular/common</code></td>
+      <td>当你想要使用 <code>NgIf</code> 和 <code>NgFor</code> 时</td>
+    </tr>
+    <tr>
+      <td>FormsModule</td>
+      <td><code>@angular/forms</code></td>
+      <td>当要构建模板驱动表单时（它包含 <code>NgModel</code>）</td>
+    </tr>
+    <tr>
+      <td>ReactiveFormsModule</td>
+      <td><code>@angular/forms</code></td>
+      <td>当要构建响应式表单时</td>
+    </tr>
+    <tr>
+      <td>RouterModule</td>
+      <td><code>@angular/router</code></td>
+      <td>要使用路由功能，并且你要用到RouterLink,<code>.forRoot()</code> 和 <code>.forChild()</code> 时</td>
+    </tr>
+    <tr>
+      <td>HttpClientModule</td>
+      <td><code>@angular/common/http</code></td>
+      <td>当你要和服务器对话时</td>
+    </tr>
+    </tbody>
+  </table>
+  <br>
+  <h4 style="color: Crimson;">基础设置</h4><br>
+  <h5>@NgModule 告诉 Angular 如何编译和启动应用及模块。</h5>
+  <table  class="table table-bordered">
+    <tr>
+      <th>属性</th>
+      <th>作用</th>
+    </tr>
+    <tr>
+      <td>declarations</td>
+      <td>声明该模块里面的组件，指令，管道</td>
+    </tr>
+    <tr>
+      <td>imports</td>
+      <td>导入其他需要使用的模块</td>
+    </tr>
+    <tr>
+      <td>exports</td>
+      <td>公开部分的组件，指令，管道</td>
+    </tr>
+    <tr>
+      <td>providers</td>
+      <td>服务提供商</td>
+    </tr>
+    <tr>
+      <td>entryComponents</td>
+      <td>需要动态编译的组件，例如动态表单</td>
+    </tr>
+    <tr>
+      <td>bootstrap</td>
+      <td>只在根模块使用，Angular 创建它并插入 index.html 宿主页面</td>
+    </tr>
+  </table>
+
+
+</div>

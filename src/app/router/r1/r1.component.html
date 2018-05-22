@@ -1,3 +1,34 @@
-<p>
-  r1 works!
-</p>
+<div class="col-mg-8 col-md-offset-2">
+  <h4 style="color: Crimson;">路由定义配置</h4>
+  <br>
+  <strong>1. 生成路由模块,并配置到app模块</strong>
+  <p><code>ng g module app-routing --module=app</code></p>
+  <br>
+  <strong>2. 配置路由模块</strong>
+  <p><code>import &#123; Routes, RouterModule &#125; from '@angular/router';</code></p>
+  <p><code>@NgModule &#40;&#123;
+    imports: [
+    RouterModule.forRoot  &#40; appRoutes &#41;
+    ],
+    exports: [RouterModule]
+    &#125; &#41;</code></p>
+  <br>
+  <strong>2. 定义预加载的组件（引入该组件）</strong>
+  <p><code>import &#123; XxComponent &#125; from './xx/xx.component'; </code></p>
+  <p><code>const routes: Routes = [
+    &#123; path: 'xx', component: XxComponent &#125;
+    ];</code></p>
+  <br>
+  <strong>2. 定义惰性加载的模块（不引入）</strong>
+  <p><code>
+    const routes: Routes = [&#123; <br>
+     path: 'xx', loadChildren: './xx/xx.module#XxModule'<br>
+    &#125;];</code>
+  </p>
+  <br>
+  <strong>3. 使用</strong>
+  <p><code>< router-outlet >< /router-outlet ></code></p>
+  <p><code>[routerLink]="['/a']"</code></p>
+  <br>
+
+</div>

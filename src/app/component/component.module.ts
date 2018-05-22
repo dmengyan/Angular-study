@@ -6,6 +6,7 @@ import { C1Component } from './c1/c1.component';
 import { C2Component } from './c2/c2.component';
 import { C3Component } from './c3/c3.component';
 import { C4Component } from './c4/c4.component';
+import { C5Component } from './c5/c5.component';
 import { ChildComponent } from './c1/child/child.component';
 import { DynamicComponentComponent } from './c4/dynamic-component/dynamic-component.component';
 import { HeroJobAdComponent} from './c4/hero-job-ad.component';
@@ -26,8 +27,9 @@ import { AdDirective } from './c4/ad.directive';
     DynamicComponentComponent,
     HeroJobAdComponent,
     HeroProfileComponent,
-    AdDirective
+    AdDirective,
+    C5Component
   ],
-  entryComponents: [ HeroJobAdComponent, HeroProfileComponent ],
+  entryComponents: [ HeroJobAdComponent, HeroProfileComponent ],    // 动态加载编译的组件
 })
 export class ComponentModule { }

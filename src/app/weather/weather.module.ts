@@ -16,10 +16,22 @@ import { DynamicFormModule } from './w5/dynamic-form/dynamic-form.module';    //
 
 @NgModule({
   imports: [
-    CommonModule, WeatherRoutingModule, FormsModule, ReactiveFormsModule, HttpModule, DynamicFormModule
+    CommonModule,
+    WeatherRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
+    DynamicFormModule
   ],
-  declarations: [W1Component, W2Component, W3Component,
-    W4Component, W5Component, ForbiddenValidatorDirective, HeroListComponent],
+  declarations: [
+    W1Component,
+    W2Component,
+    W3Component,
+    W4Component,
+    W5Component,
+    ForbiddenValidatorDirective,
+    HeroListComponent
+  ],
   providers: [W1Service]
 })
 export class WeatherModule { }

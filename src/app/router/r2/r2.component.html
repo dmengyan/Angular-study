@@ -1,3 +1,26 @@
-<p>
-  r2 works!
-</p>
+<div class="col-mg-8 col-md-offset-2">
+  <h4 style="color: Crimson;">惰性模块（路由懒加载）</h4>
+  <br>
+  <strong>1.1. 生成带路由的特性模块</strong>
+  <p>ng g module A -routing</p>
+  <br>
+  <strong>1.2. 定义该模块</strong>
+  <p>app-routing模块中：&#123; path: 'a', loadChildren: './a/a.module#AModule' &#125; </p>
+  <br>
+  <strong>1.3. 路由出口及链接</strong>
+  <p>app.html中：<br>
+    &lt; router-outlet &gt; &lt;/router-outlet&gt;<br>
+    [routerLink]="['/a']"
+  </p>
+  <br>
+
+  <strong>2.1. 生成特性模块的组件</strong>
+  <p>ng g c 组件名</p>
+  <br>
+  <strong>2.2. 定义该组件的路由</strong>
+  <p>&#123; path: 'a1', component: A1Component &#125; </p>
+  <br>
+  <strong>2.3. 路由出口及链接</strong>
+  <p>[routerLink]="['/a/a1']"</p>
+  <br>
+</div>
