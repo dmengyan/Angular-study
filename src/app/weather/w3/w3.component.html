@@ -1,0 +1,60 @@
+
+  <div style="border: 1px dashed #CCCCCC;padding: 20px 40px;margin: 20px 0">
+    <form action="" [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form-inline">
+      <!--<p>Form value: {{ myForm.value | json }}</p>-->
+      <!--<p>Form status: {{ myForm.status | json }}</p>-->
+      <!--获取表单的错误信息-->
+      <!--<p>{{ myForm.controls.name?.errors | json }}</p>-->
+      <!--<p>{{ myForm.get('name').errors | json }}</p>-->
+
+      <div class="form-group">
+        <label class="center-block">姓名:
+          <input class="form-control" formControlName="name" required> <!--[formControl]="name"-->
+        </label>
+      </div><br><br>
+      <strong>地址:</strong><br>
+      <div formGroupName="secretLairs" class="well well-lg">
+        <div *ngFor="let address of secretLairs.controls; let i=index" [formGroupName]="i" >
+          <strong style="color: #666">地址{{i + 1}} </strong><br>
+
+          <div class="form-group">
+            <label class="center-block">所在市:
+              <input class="form-control" formControlName="city">
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="center-block">所在区:
+                <select class="form-control" formControlName="state">
+                  <option *ngFor="let state of states" [value]="state" >{{state}}</option>
+                </select>
+              </label>
+          </div><br>
+          <div class="form-group">
+              <label class="center-block">街道:
+                <input class="form-control" formControlName="street">
+              </label>
+            </div>
+            <div class="form-group">
+              <label class="center-block">邮编:
+                <input class="form-control" formControlName="zip">
+              </label>
+            </div>
+        </div>
+        <button (click)="addLair()" type="button" class="btn btn-success">添加地址</button>
+      </div>
+      <div class="form-group radio">
+       <strong>技能：</strong>
+        <label class="radio-inline"><input type="radio" formControlName="power" value="flight">Flight</label>
+        <label class="radio-inline"><input type="radio" formControlName="power" value="x-ray vision">X-ray vision</label>
+        <label class="radio-inline"><input type="radio" formControlName="power" value="strength">Strength</label>
+      </div><br><br>
+
+      <div style="margin-bottom: 1em">
+        <button type="submit" [disabled]="myForm.pristine" class="btn btn-success">保存</button> &nbsp;
+        <button type="button" (click)="revert()" [disabled]="myForm.pristine" class="btn btn-danger">重置</button>
+      </div>
+
+    </form>
+  </div>
+
+

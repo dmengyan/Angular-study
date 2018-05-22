@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="col-md-offset-2 col-md-8">
+    <h3 style="color: Crimson;">父子组件之间的通讯</h3><br>
+    <div style="border: 1px dashed #CCCCCC;padding: 20px 40px;">
+
+      <strong>父组件</strong>
+      <p>接收子组件传来的消息：{{ MsgFormChild }}</p>
+
+      <app-child [message]="MsgToChild" (outer)="recieve($event)"></app-child>
+
+    </div>
+  </div>
+</div>

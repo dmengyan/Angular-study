@@ -1,0 +1,40 @@
+
+<div class="col-md-8 col-md-offset-2">
+  <h3 style="color:Crimson">多层注入器 </h3><br>
+
+  <h4>1. 分层注入：</h4>
+  <p>Angular 有一个多级依赖注入系统, 可以在组件树中的任何级别上重新配置注入器。</p><br>
+
+  <h4>2. 注入器冒泡：</h4>
+  <p>组件自下而上查找注入器，选择遇到的第一个提供商。</p><br>
+
+  <h4>3. 在不同层级再次提供同一个服务</h4>
+  <p>不建议这样。注入器树中间层注入器上的提供商，可以拦截来自底层的对特定服务的请求。
+    这导致它可以“重新配置”和者说“遮蔽”高层的注入器。</p><br>
+
+  <h4>4. 组件注入器</h4>
+  <p>即在不同层次上重新配置一个或多个提供商，例子如下：</p><br>
+
+  <h4>demo1：服务隔离</h4>
+  <p>即限制服务的作用域,可以在组件元数据的 providers 中提供该服务</p><br>
+
+  <h4>demo2：多重编辑会话</h4>
+  <p>即很多应用允许用户同时进行多个任务</p><hr>
+
+  <h4 style="color:Crimson">报税单</h4>
+  <ul>
+    <li *ngFor="let hero of heroes | async" (click)="showTaxReturn(hero)">{{ hero.name}}</li>
+  </ul>
+  <app-tax-return *ngFor="let selected of selectedTaxReturns; let i = index"
+    [taxReturn]="selected" (close)="closeTaxReturn(i)">
+  </app-tax-return><hr>
+
+  <!--<h4 style="color:Crimson">Getter demo1: 身份证号</h4>-->
+  <!--<input type="text" class="form-control" #add (keyup.enter)="0"  (blur)="0" placeholder="请输入您的身份证号"><br>-->
+  <!--<p>身份证号： {{ add.value }}</p>-->
+  <!--<p>行政区域代码： {{ add.value }}</p>-->
+  <!--<p>出生年月日：{{ add.value }}</p>-->
+  <!--<br>-->
+
+
+</div>

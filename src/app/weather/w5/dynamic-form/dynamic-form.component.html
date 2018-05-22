@@ -1,0 +1,16 @@
+<!--<form [formGroup]="form">{{ form.value | json }}</form>-->
+<!--更新组件-->
+<form class="dynamic-form" [formGroup]="form"
+(ngSubmit)="submitted.emit(form.value)">
+  <div id="scroll">
+    <ng-container *ngFor="let field of config"
+                  appDynamicField [config]="field" [group]="form">
+    </ng-container>
+  </div>
+  <br>
+  {{ form.value | json}}<br>
+</form>
+
+<!--使用 <ng-container>作为容器来重复我们的动态字段。
+  当我们的组件被渲染时，这是不可见的，我们只会在 DOM 中看到动态创建的组件。-->
+

@@ -1,0 +1,23 @@
+
+<div class="col-md-8 col-md-offset-2">
+
+  <h4 style="color:Crimson">Getter demo1: 身份证号</h4>
+  <input type="text" class="form-control"  placeholder="请输入身份证号"
+         #id (keyup.enter)="update(id.value)"  (blur)="update(id.value)"><br>
+  <p>身份证号： {{ idNumber }}</p>
+  <p>行政区域代码：{{ districtNo }} </p>
+  <p>出生年月日：{{ birthday }}</p>
+  <br>
+
+  <h4 style="color:Crimson">Getter demo2: 联系电话</h4>
+
+  <input type="text" class="form-control" placeholder="请输入联系电话"
+         #phone (keyup.enter)="update2(phone.value)"  (blur)="update2(phone.value)"><br>
+  <p>联系电话：{{ linkPhone }}</p>
+  <p>电话类型：{{ phoneType }} </p>
+  <p>尾号：{{ tail }} </p>
+  <p>运营商：{{ Operator }}</p>
+  <br>
+
+
+</div>

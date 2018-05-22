@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="col-md-8 col-lg-offset-2">
+    <h3 style="color:Crimson">模板驱动表单 </h3><br>
+    <div style="border: 1px dashed #CCCCCC;padding:40px;">
+      <!--表单-->
+      <div [hidden]='submitted'>
+        <form action="" class="form" #heroForm="ngForm" (ngSubmit)="onSubmit()">
+          {{ name.className }}
+          <!--{{ demo | json }}-->
+          <div class="form-group">
+            <label for="name"> name: </label>
+            <input type="text" id="name" class="form-control" required
+                   [(ngModel)]="demo.name" name="name" #name="ngModel">
+          </div>
+          <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          名称不能为空
+          </div>
+
+          <div class="form-group">
+            <label for="age"> age: </label>
+            <input type="text" id="age" class="form-control" [(ngModel)]="demo.age" name="age">
+          </div>
+
+          <div class="form-group">
+            <label for="skill"> skill: </label>
+            <select id="skill" class="form-control" name="skill" [(ngModel)]="demo.skill" required>
+              <option [value]="skill" *ngFor="let skill of skills">{{ skill }}</option>
+            </select>
+          </div><br>
+          <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">提交</button>
+          <button type="reset" class="btn btn-primary" (click)="heroForm.reset();newHero()">重置</button>
+
+        </form>
+      </div>
+
+      <!--提交后-->
+      <div [hidden]="!submitted">
+        <h4>提交内容如下:</h4><br>
+        <div class="row">
+          <div class="col-xs-3">Name</div>
+          <div class="col-xs-9  pull-left">{{ demo.name }}</div>
+        </div><br>
+        <div class="row">
+          <div class="col-xs-3">Age</div>
+          <div class="col-xs-9 pull-left">{{ demo.age }}</div>
+        </div><br>
+        <div class="row">
+          <div class="col-xs-3">Power</div>
+          <div class="col-xs-9 pull-left">{{ demo.skill }}</div>
+        </div><br><br><br><br><br>
+        <button class="btn btn-primary" (click)="submitted=false">编辑</button>
+      </div>
+    </div>
+  <!--总结-->
+    <br><br>
+    <h4 style="color: Crimson"> note:</h4><br>
+    <ul>
+      <li>1. 创造Hero模型时，需在构造函数参数中生成公共字段，当有实例时，自动赋值给公共字段。
+      </li><br>
+      <li>2. #heroForm="ngForm" 即 引用 heroForm 变量（整个表单）到 NgForm 指令；
+        创建 NgForm 指令并添加额外特性，监听表单内元素的属性（如有效性）。
+      </li><br>
+      <li>3.下拉列表的数据绑定无效，option的 value = "skill" => [value]="skill"。
+      </li><br>
+      <li>4. [(ngModel)]双向数据绑定，必须定义name属性，双向绑定记住 ' 盒子里的香蕉 ' 。
+      </li><br>
+      <li>5. 验证表单的状态时，在input上添加模板引用变量（如#name），使用{{ name.className}}查看；
+        输出验证信息时，#name="ngModel"获取当前的ngModel（该表单控件），
+        [hidden]="name.state"通过控件状态控制验证信息。
+      </li><br>
+      <li>6. 为什么是 “ngModel”？ 指令的 exportAs 属性告诉 Angular 如何链接模板引用变量到指令。
+        这里把 name 设置为 ngModel 是因为 ngModel 指令的 exportAs 属性设置成了 “ngModel”。
+      </li>
+    </ul>
+</div>
+</div>

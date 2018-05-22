@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+
+    <h3  style="color: Crimson">模板驱动验证</h3><br>
+    <div style="border: 1px dashed #CCCCCC;padding: 20px 40px;">
+      <form action="" #tdForm="ngForm">
+
+        <!--<p>{{ tdForm.value | json }}</p><br>-->
+
+        <div class="form-group">
+          <label  class="center-block">名称：
+            <input class="form-control" type="text" minlength="4" appForbiddenName="bobuu" required
+                   [(ngModel)]="demo.name" name="name" #tdName="ngModel" >
+          </label>
+        </div>
+
+        <!--验证提示-->
+        <div *ngIf="tdName.invalid && (tdName.dirty || tdName.touched)" class="alert alert-danger">
+          <div *ngIf="tdName.errors.required">名称不能为空</div>
+          <div *ngIf="tdName.errors.minlength">名称不少于4个字符</div>
+          <div *ngIf="tdName.errors.forbiddenName">名称不能为bobuu</div>
+        </div>
+
+        <div class="form-group">
+          <label  class="center-block">年龄：
+            <input class="form-control" type="text" [(ngModel)]="demo.age" name="age">
+          </label>
+        </div>
+        <br><br><br>
+      </form>
+    </div><br><br>
+
+    <h3  style="color: Crimson">响应式表单验证</h3><br>
+    <div style="border: 1px dashed #CCCCCC;padding: 20px 40px;">
+      <form action="" [formGroup]="rtForm">
+
+        <!--<p>{{ rtForm.value | json }}</p><br>-->
+
+        <div class="form-group">
+          <label  class="center-block">名称：
+            <input class="form-control" type="text" required formControlName="name">
+          </label>
+        </div>
+
+        <!--验证提示 // 虽然验证不再需要它，但仍保留它，以支持 CSS 样式或可访问性-->
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+          <div *ngIf="name.errors.required">名称不能为空</div>
+          <div *ngIf="name.errors.minlength">名称不少于4个字符</div>
+          <div *ngIf="name.errors.forbiddenName">名称不能为balabala</div>
+          <!-- 或者使用 [hidden]="!name.errors.xxx" -->
+        </div>
+
+        <div class="form-group">
+          <label  class="center-block">年龄：
+            <input class="form-control" type="text" formControlName="age">
+          </label>
+        </div>
+
+      </form>
+    </div><br>
+
+    <h4 style="color: Crimson">常用内置验证器:</h4>
+    <ul>
+      <li>1. required - 设置表单控件值是非空的
+      </li><br>
+      <li>2. minlength - 设置表单控件值的最小长度
+      </li><br>
+      <li>3. maxlength - 设置表单控件值的最大长度
+      </li><br>
+      <li>4. email - 设置表单控件值的格式是 email
+      </li><br>
+      <li>5. pattern - 设置表单控件的值需匹配 pattern 对应的模式
+      </li>
+    </ul><br><br><br>
+
+    <h4 style="color: Crimson">note:</h4>
+    <ul>
+      <li>
+        1. 同步验证器和异步验证器:同步验证器函数在实例化一个 FormControl 时把它作为构造函数的第二个参数传进去；
+        异步验证器函数返回一个Promise或Observable，在实例化一个 FormControl 时把它作为构造函数的第三个参数传进去。
+        出于性能方面的考虑，只有在所有同步验证器都通过之后，Angular 才会运行异步验证器。
+      </li>
+      <br>
+      <li>
+        2. 在响应式表单中，通常会使用 get 方法来访问表单控件，但有时候为模板定义一些 getter 作为简短形式。
+        类似于模板驱动表单的 #name="ngModel"。
+      </li>
+    </ul><br><br><br>
+
+
+  </div>
+</div>

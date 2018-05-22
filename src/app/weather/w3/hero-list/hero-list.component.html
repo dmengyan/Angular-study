@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+    <h3 style="color: Crimson">模型驱动表单（响应式表单）</h3><br>
+
+    <p>请选择人员：</p>
+    <!--<button (click)="getHeroes()" class="btn btn-primary">更新</button>-->
+    <button style="margin-right: 10px;" class="btn btn-info" (click)="select(hero)"
+            *ngFor="let hero of heroes | async"> {{ hero.name }} </button><br>
+
+
+    <div *ngIf="selectedHero">
+      <!--{{ selectedHero | json }}-->
+      <app-w3 [hero]="selectedHero" ></app-w3>
+    </div>
+    <br>
+
+    <h4 style="color: Crimson">对比两种表单</h4>
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>区分</th>
+        <th>模板驱动表单</th>
+        <th>响应式表单</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>引用模块</td>
+        <td>FormsModule</td>
+        <td>ReactiveFormsModule</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>数据更新</td>
+        <td>异步--时序问题，高级场景更复杂</td>
+        <td>同步--易控制，让编程、测试和校验更容易</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>指令</td>
+        <td>[(ngModel)]="" name=""<br>
+          #myForm="ngForm"<br>
+        </td>
+        <td>FormControl跟踪单一表单控件的值和有效性状态 <br>
+          FormGroup跟踪一组表单的值和有效性状态 <br>
+          FormArray跟踪有序数组的值和有效性状态 <br>
+          formBuilder <!--this.myForm = this.formBuilder.group({})-->
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>特点</td>
+        <td>使用方便 <br>
+          适用于简单的场景<br>
+          通过 [(ngModel)] 实现数据双向绑定<br>
+          最小化组件类的代码<br>
+          不易于单元测试</td>
+        <td>比较灵活<br>
+          适用于复杂的场景<br>
+          简化了HTML模板的代码，把验证逻辑抽离到组件类中<br>
+          方便的跟踪表单控件值的变化<br>
+          易于单元测试</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h4 style="color: Crimson">note:</h4>
+    <ul>
+      <li>1. FormControl 构造函数接收三个可选参数： 初始值、验证器数组和异步验证器数组。</li><br>
+      <li>2. 响应式表单模型: <br>
+        <strong>html中的表单模板</strong> <= 绑定 => <strong>ts中的表单模型</strong>（由控件对象数组成）
+        <= 映射 => <strong>data数据中的数据模型</strong>
+        <!--<img src="../../../assets/img/rtForm.JPG" alt="" style="width: 100%">--></li><br>
+      <li>3. setValue() 赋值给每个表单控件,赋值前先检查数据对象的值,反馈错误信息；<br>
+        patchValue() 赋值给指定控件，不检测，无反馈。
+
+
+      </li><br>
+    </ul>
+  </div>
+</div>
+<br><br><br><br>

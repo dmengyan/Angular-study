@@ -1,0 +1,121 @@
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse  navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" data-toggle="collapse" data-target="#myNavbar" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+    </div>
+    <div id="myNavbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a [routerLink]="['/']" class="navbar-brand"> Angular 核心知识  </a></li>
+          <!--<span class="glyphicon glyphicon-home"></span>-->
+        </ul>
+        <ul class="nav navbar-nav navbar-middle">
+
+          <li class="disabled"> <a style="color:black">  . . . . . . . . . . . . . . .</a> </li>
+
+          <li routerLinkActive="active"> <a routerLink="/markets">首页</a></li>
+
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false" class="dropdown-toggle">路由
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li routerLinkActive="active"><a [routerLink]="['/router/r1']">路由定义配置</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/router/r2']">路由懒加载</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/router/r3']">路由守卫</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false" class="dropdown-toggle">模块
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li routerLinkActive="active"><a [routerLink]="['/module/m1']">常用模块（基础设置）</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/module/m2']">特性模块</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/module/m3']">共享模块</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/module/m4']">常见问题总结</a></li>
+              <!--<li routerLinkActive="active"><a [routerLink]="['/module/m5']">特性模块</a></li>-->
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false" class="dropdown-toggle">组件
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li routerLinkActive="active"><a [routerLink]="['/component/c1']">组件交互</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/component/c2']">组件样式</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/component/c3']">生命周期钩子</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/component/c4']">动态组件</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false" class="dropdown-toggle">模板
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li routerLinkActive="active"><a [routerLink]="['/template/t1']">属性型指令</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/template/t2']">结构型指令</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/template/t3']">模板语法</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/template/t4']">自定义元素</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/template/t5']">管道</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/template/t6']">动画</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
+            aria-expanded="false" class="dropdown-toggle">表单
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li routerLinkActive="active"><a [routerLink]="['/weather/yahoo']">用户输入</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/weather/facts']">模板驱动表单</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/weather/w4']">表单验证</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/weather/globalwarming']">响应式表单</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/weather/w5']">动态表单</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false" class="dropdown-toggle">服务
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li routerLinkActive="active"><a [routerLink]="['/service/s1']">创建服务</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/service/s2']">服务提供商</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/service/s3']">依赖注入</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/di/di3']">分层注入</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/di/di4']">getter</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false" class="dropdown-toggle">Http
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li routerLinkActive="active"><a [routerLink]="['/service/s1']">HttpClient</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/service/s2']">Observable</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/service/s3']">RxJS</a></li>
+              <!--<li routerLinkActive="active"><a [routerLink]="['/di/di3']">分层注入</a></li>-->
+              <!--<li routerLinkActive="active"><a [routerLink]="['/di/di4']">getter</a></li>-->
+            </ul>
+          </li>
+
+          <li routerLinkActive="active"> <a routerLink="/sports">i18n</a></li>
+
+        </ul>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- /nav bar -->
+
+<div class="container">
+  <br><br><br><br>
+    <router-outlet></router-outlet>
+</div>
+<!-- /container -->
