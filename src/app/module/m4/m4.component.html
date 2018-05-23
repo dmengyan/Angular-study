@@ -1,3 +1,11 @@
-<p>
-  m4 works!
-</p>
+<div class="col-md-8 col-md-offset-2">
+  <h4  style="color: Crimson">模块常见问题</h4>
+  <br>
+  <strong>1."Can't bind to 'x' since it isn't a known property of 'y'"报错</strong>
+  <p>忘记声明指令“x”，或者你没有导入“x”所属的模块。<br>
+    如果“x”其实不是属性，或者是组件的私有属性（比如它不带 @Input 或 @Output 装饰器），那么你也同样会遇到这个错误。</p>
+  <br>
+  <strong>2.模块的导入</strong>
+  <p>模块被多次导入的话，仅加载一次，第一次加载会缓存 <br>
+    模块之间不能循环依赖，比如互相导入</p>
+</div>

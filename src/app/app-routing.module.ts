@@ -6,7 +6,7 @@ import { SportsComponent } from './base/sports.component';
 const appRoutes: Routes = [
   { path: '', redirectTo: '/markets', pathMatch: 'full' },
   { path: 'markets', component: MarketsComponent },                                     // 首页 架构图
-  { path: 'sports', component: SportsComponent },
+  { path: 'sports', component: SportsComponent },                                       // i18n 国际化
   { path: 'router', loadChildren: './router/router.module#RouterModule' },              // 路由
   { path: 'module', loadChildren: './module/module.module#ModuleModule' },              // 模块
   { path: 'component', loadChildren: './component/component.module#ComponentModule'},   // 组件
@@ -19,9 +19,9 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes)    // 除了根模块，其他均用 forChild()
   ],
-  exports: [RouterModule]
+  exports: [RouterModule]              // 导出供 RouterLink 和 RouterOutlet 使用
 })
 export class AppRoutingModule {
 

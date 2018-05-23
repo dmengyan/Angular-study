@@ -1,3 +1,44 @@
-<p>
-  m2 works!
-</p>
+<div class="col-md-8 col-md-offset-2">
+  <h4 style="color: Crimson">特性模块的分类</h4><br>
+  <table  class="table table-bordered">
+    <tr>
+      <th>特性模块</th>
+      <th>介绍</th>
+    </tr>
+    <tr>
+      <td>领域 ~</td>
+      <td>还没搞懂</td>
+    </tr>
+    <tr>
+      <td>路由 ~</td>
+      <td>
+        所有惰性加载的模块。<br>
+        该模块不导出组件和模块，否则违反惰性加载。<br>
+        也很少会有服务提供商，因为 该服务的生命周期 = 该模块的生命周期。<br>
+        该模块及导入的模块不要提供全应用级的单例服务。
+      </td>
+    </tr>
+    <tr>
+      <td>路由模块</td>
+      <td>
+        1.定义路由 <br>
+        2.imports 配置路由模块: <br>
+          根路由模块: RouterModule.forRoot(appRoutes)<br>
+          其他路由模块: RouterModule.forChild(routes)<br>
+        3.exports 导出供所在模块的 routerLink 和 router-outlet 使用
+      </td>
+    </tr>
+    <tr>
+      <td>服务 ~</td>
+      <td>
+        理论上，完全由服务提供商组成的，没有可声明对象。仅在根模块中导入。<br>
+        大多是提供了一些工具服务，比如数据访问和消息。例如：HttpClientModule。
+      </td>
+    </tr>
+    <tr>
+      <td>窗口部件 ~</td>
+      <td>提供组件、指令和管道。比如：primeNG ，使用时导入相关的模块。</td>
+    </tr>
+  </table>
+
+</div>

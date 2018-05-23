@@ -15,12 +15,12 @@
     </li>
   </ul>
   <br>
-  <h4 style="color: Crimson">引导用的入口组件</h4>
+  <h4 style="color: Crimson">1. 引导用的入口组件</h4>
   <p>Angular 通过@NgModule.bootstrap函数 动态加载根组件 AppComponent。<br>
   【 参考app.module.ts中的备注 】
   </p>
   <br>
-  <h4 style="color: Crimson">路由到的入口组件</h4>
+  <h4 style="color: Crimson">2. 路由到的入口组件</h4>
   <p>特性模块的路由模块中的 组件路由定义，例如：<br>
     <code>
       const routes: Routes = [
@@ -31,17 +31,14 @@
       ];
     </code><br>
     所有路由组件都必须是入口组件。<br>
-    这需要你把同一个组件添加到两个地方（路由中和 entryComponents 中），<br>
-    但编译器足够聪明，可以识别出这里是一个路由定义，<br>
-    因此它会自动把这些路由组件添加到 entryComponents 中。<br>
+    编译器可以识别出这是一个路由定义，<br>
+    会自动把它添加到 entryComponents 中。<br>
   </p>
 
   <br>
   <h4 style="color: Crimson">entryComponents 入口组件</h4>
-  <p>Angular 会自动把 @NgModule.bootstrap 中的组件以及路由定义中的组件添加到入口组件中。<br>
-    虽然这两种机制足够自动添加大多数入口组件，<br>
-    但如果你要用其它方式根据类型来命令式的引导或动态加载某个组件，<br>
-    你就必须把它们显式添加到 entryComponents 中了。<br>
-    例如：动态组件</p>
+  <p>1 2 均自动添加到entryComponents，<br>
+    但如果用其它方式根据类型来命令式的引导或动态加载某个组件，<br>
+    你需要把他们手动添加到 entryComponents 中。<br>例如：动态组件</p>
 
 </div>

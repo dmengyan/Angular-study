@@ -1,5 +1,5 @@
 <div class="col-mg-8 col-md-offset-2">
-  <h4 style="color: Crimson;">路由定义配置</h4>
+  <h4 style="color: Crimson;">路由定义配置（无参）</h4>
   <br>
   <strong>1. 生成路由模块,并配置到app模块</strong>
   <p><code>ng g module app-routing --module=app</code></p>
@@ -30,5 +30,12 @@
   <p><code>< router-outlet >< /router-outlet ></code></p>
   <p><code>[routerLink]="['/a']"</code></p>
   <br>
-
+  <h4 style="color: Crimson;">路由定义配置（传参）</h4>
+  <strong>1.定义</strong>
+  <p><code>&#123; path: 'xx/:id', component: XxComponent &#125;</code></p>
+  <strong>2.使用</strong>
+  <p><code>[routerLink]="['/a/hero.id']"</code></p>
+  <strong>3.获取路由中的参数(必选参数？可选参数？)</strong>
+  <p><code>const id = +this.route.snapshot.paramMap.get &#40;'id'&#41;</code><br>
+  路由参数总会是字符串。 JavaScript 的 (+) 操作符会把字符串转换成数字，英雄的 id 就是数字类型。</p>
 </div>

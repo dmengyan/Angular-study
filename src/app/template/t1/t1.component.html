@@ -1,3 +1,31 @@
-<p>
-  t1 works!
-</p>
+<div class="col-md-8 col-md-offset-2">
+
+  <h4 style="color: Crimson">指令分类</h4>
+
+  <p><strong>1. 组件</strong> 拥有模板的指令。</p>
+  <p><strong>2. 结构型指令</strong> 改变DOM元素的结构。</p>
+  <p><strong>3. 属性型指令</strong> 改变DOM元素的外观、行为。</p>
+  <br>
+
+  <h4 style="color: Crimson">结构型指令</h4>
+
+  <p><strong style="color: Crimson">a. 内置结构型指令</strong></p>
+  <p><code> NgIf</code></p>
+  <p><code>< div *ngIf="hero" class="name">&#123; &#123; hero.name &#125; &#125;< /div></code></p>
+  <p>
+    <code>
+      < ng-template [ngIf]="hero">
+        < div class="name">&#123; &#123; hero.name &#125; &#125;< /div >
+      < /ng-template>
+    </code>
+  </p>
+  <p><code>NgFor</code>   *ngFor="let hero of heroes"</p>
+  <p><code>NgSwitch</code>  [ngSwitch]="hero?.emotion" *ngSwitchCase="'happy'" [hero]="hero"</p>
+  <p>星号(*)语法糖，会变成一个 &lt; ng-template &gt; 标记，
+    包裹着宿主元素及其子元素。</p>
+  <p>在一个宿主元素上,只能有一个结构型指令，但可以有多个属性型指令。</p>
+  <br>
+
+  <p><strong style="color: Crimson">b. 自定义结构型指令</strong></p>
+
+</div>
