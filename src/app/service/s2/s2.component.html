@@ -1,3 +1,33 @@
-<p>
-  s2 works!
-</p>
+<div class="col-md-8 col-md-offset-2">
+  <h4 style="color: Crimson">服务提供商 providers</h4><br>
+  <h5>1. 在整个应用中提供服务</h5>
+  <pre>
+    <code>import &#123; Injectable &#125; from '@angular/core';
+      @Injectable&#40;&#123;
+      providedIn: 'root',
+      &#125;&#41;
+      export class UserService &#123;
+      &#125;</code></pre>
+
+  <h5>2. 在模块中提供服务</h5>
+  <pre>
+    <code>@Injectable&#40;&#123;
+     <span style="color: Crimson"> // 首选方式 </span>
+       <span style="color: Crimson">providedIn: UserModule,   // 可以摇树优化</span>
+      &#125;&#41;</code></pre>
+  <p>或</p>
+  <pre>
+    <code>import &#123; UserService &#125; from './user.service';
+      @NgModule&#40;&#123;
+        <span style="color: Crimson">providers: [ UserService ], // 无法摇树优化</span>
+      &#125;&#41;
+      export class UserModule &#123;&#125;</code></pre>
+
+  <h5>3. 在组件中提供服务</h5>
+  <pre>
+    <code>@Component&#40;&#123;
+        providers: [UserService]
+      &#125;&#41;;</code></pre>
+  <br>
+
+</div>

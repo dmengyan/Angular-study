@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MarketsComponent } from './base/markets.component';
 import { SportsComponent } from './base/sports.component';
+import { AuthService } from './services/auth/auth.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/markets', pathMatch: 'full' },

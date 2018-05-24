@@ -1,41 +1,56 @@
 <div class="col-mg-8 col-md-offset-2">
-  <h4 style="color: Crimson;">路由定义配置（无参）</h4>
-  <br>
-  <strong>1. 生成路由模块,并配置到app模块</strong>
-  <p><code>ng g module app-routing --module=app</code></p>
-  <br>
-  <strong>2. 配置路由模块</strong>
-  <p><code>import &#123; Routes, RouterModule &#125; from '@angular/router';</code></p>
-  <p><code>@NgModule &#40;&#123;
-    imports: [
-    RouterModule.forRoot  &#40; appRoutes &#41;
-    ],
-    exports: [RouterModule]
-    &#125; &#41;</code></p>
-  <br>
-  <strong>2. 定义预加载的组件（引入该组件）</strong>
-  <p><code>import &#123; XxComponent &#125; from './xx/xx.component'; </code></p>
-  <p><code>const routes: Routes = [
-    &#123; path: 'xx', component: XxComponent &#125;
-    ];</code></p>
-  <br>
-  <strong>2. 定义惰性加载的模块（不引入）</strong>
-  <p><code>
-    const routes: Routes = [&#123; <br>
-     path: 'xx', loadChildren: './xx/xx.module#XxModule'<br>
-    &#125;];</code>
-  </p>
-  <br>
-  <strong>3. 使用</strong>
-  <p><code>< router-outlet >< /router-outlet ></code></p>
-  <p><code>[routerLink]="['/a']"</code></p>
-  <br>
-  <h4 style="color: Crimson;">路由定义配置（传参）</h4>
-  <strong>1.定义</strong>
-  <p><code>&#123; path: 'xx/:id', component: XxComponent &#125;</code></p>
-  <strong>2.使用</strong>
-  <p><code>[routerLink]="['/a/hero.id']"</code></p>
-  <strong>3.获取路由中的参数(必选参数？可选参数？)</strong>
-  <p><code>const id = +this.route.snapshot.paramMap.get &#40;'id'&#41;</code><br>
-  路由参数总会是字符串。 JavaScript 的 (+) 操作符会把字符串转换成数字，英雄的 id 就是数字类型。</p>
+  <h4 style="color: Crimson;">路由定义配置</h4><br>
+
+  <strong>1. 路由模块创建</strong>
+  <p>根路由：<code>ng g module app-routing --module=app</code> 并在根模块引入</p>
+  <p>字路由：<code>ng g module module-name --routing</code> ( 创建模块时创建路由 )</p>
+
+  <strong>2. 路由配置</strong>
+  <pre>
+    <code>const routes: Routes = [
+        // 无参
+        &#123; path: '/news', component: NewsComponent &#125;
+        // 传参
+        &#123; path: '/news/:id', component: NewsComponent &#125;
+        // 懒加载
+        &#123; path: '/other', loadChildren: "./other/other.module#otherModule" &#125;
+        // 重定向
+        &#123; path: '**', pathMatch: 'full', redirectTo: ''  &#125;
+        // 默认路径
+        &#123; path: '',  component: NewsComponent  &#125;
+    ];</code></pre>
+  <pre>
+    <code>// 导出以供调用
+    @NgModule &#40;&#123;
+        imports: [
+            RouterModule.forRoot  &#40; appRoutes &#41; // 其他子路由用 forChild()
+        ],
+        exports: [RouterModule]
+    &#125;&#41;</code></pre>
+
+  <strong>3. 路由加载</strong>
+  <pre>
+    <code>// 在根组件或当前组件的模板中
+    < router-outlet >< /router-outlet >
+    // 多个路由区域 -- 即访问 /news/ 时同时加载 NewsComponent 和 News2Cmponent 两个组件
+    &#123; path: 'news', outlet:'let1'  component: NewsComponent &#125;
+    &#123; path: 'news', outlet:'let2'  component: News2Cmponent &#125;
+    < router-outlet name="let1" >< /router-outlet >
+    < router-outlet name="let2" >< /router-outlet >
+    </code></pre>
+
+  <strong>4. 链接及访问</strong>
+  <pre>
+    <code>< a routerLink="/detail/1" routerLinkActive="active">detail< /a>
+    < a [routerLink]="['/detail', news . id]">&#123; &#123; news.title &#125; &#125;< /a>
+    < a [routerLink]="[&#123; outlets: &#123; let2: ['news'] &#125; &#125;]">Contact< /a>
+
+      // routerLinkActive="active" 即在本路由激活时添加样式 .active</code></pre>
+       或
+  <pre>
+    <code>import &#123; Router &#125; from '@angular/router';
+      constructor&#40; private router: Router ;&#41; &#123;&#125;
+      this.router.navigate&#40;['/detail', this.news.id];&#41;
+      this.router.navigate&#40;[&#123; outlets: &#123; let2: null &#125;&#125;];&#41;;</code></pre>
+  <br><br>
 </div>
