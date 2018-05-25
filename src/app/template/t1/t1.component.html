@@ -7,25 +7,89 @@
   <p><strong>3. 属性型指令</strong> 改变DOM元素的外观、行为。</p>
   <br>
 
-  <h4 style="color: Crimson">结构型指令</h4>
+  <h4 style="color: Crimson">内置结构型指令</h4>
 
-  <p><strong style="color: Crimson">a. 内置结构型指令</strong></p>
   <p><code> NgIf</code></p>
-  <p><code>< div *ngIf="hero" class="name">&#123; &#123; hero.name &#125; &#125;< /div></code></p>
-  <p>
-    <code>
-      < ng-template [ngIf]="hero">
-        < div class="name">&#123; &#123; hero.name &#125; &#125;< /div >
-      < /ng-template>
-    </code>
+  <p *ngIf="true">
+    ngIf 为 true 时存在，为 false 是不存在（不是隐藏）
   </p>
-  <p><code>NgFor</code>   *ngFor="let hero of heroes"</p>
-  <p><code>NgSwitch</code>  [ngSwitch]="hero?.emotion" *ngSwitchCase="'happy'" [hero]="hero"</p>
+  <p *ngIf="false">
+    ngIf 为 false
+  </p>
+
+  <p><code>NgFor</code></p>
+  <p> *ngFor="let hero of heroes"</p>
+
+  <p><code>NgSwitch</code></p>
+
+
+  <br>
+
   <p>星号(*)语法糖，会变成一个 &lt; ng-template &gt; 标记，
     包裹着宿主元素及其子元素。</p>
   <p>在一个宿主元素上,只能有一个结构型指令，但可以有多个属性型指令。</p>
+
+  <p>如果没有使用结构型指令，而仅仅把一些别的元素包装进 < ng-template> 中，那些元素就是不可见的。</p>
+  <div style="border: 1px dashed #CCCCCC;padding: 10px 20px;">
+    <p>Hip!</p>
+    <ng-template>
+      <p>lalalala!</p>
+    </ng-template>
+    <p>Hooray!</p>
+  </div>
   <br>
 
-  <p><strong style="color: Crimson">b. 自定义结构型指令</strong></p>
 
+  <h4 style="color: Crimson">自定义结构型指令</h4>
+  <div style="border: 1px dashed #CCCCCC;padding: 10px 20px;">
+    <p>
+      The condition is currently
+      <span [ngClass]="{ 'a': !condition, 'b': condition, 'unless': true }">{{condition}}</span>.
+      <button class="btn btn-default"
+        (click)="condition = !condition"
+        [ngClass] = "{ 'a': condition, 'b': !condition }" >
+        Toggle condition to {{condition ? 'false' : 'true'}}
+      </button>
+    </p>
+    <p *appUnless="condition" class="unless a">
+      (A) This paragraph is displayed because the condition is false.
+    </p>
+
+    <p *appUnless="!condition" class="unless b">
+      (B) Although the condition is true,
+      this paragraph is displayed because appUnless is set to false.
+    </p>
+  </div>
+  <br>
+   <p>1. 新建指令 </p>
+   <p>2. 导入 <code> Input</code>、<code>TemplateRef </code>和 <code>ViewContainerRef</code></p>
+   <p>3. 设置 CSS 属性选择器 ，以便在模板中标识出这个指令该应用于哪个元素。</p>
+  <br>
+  <h4 style="color: Crimson">ng-template & ng-container</h4>
+  <table  class="table table-bordered">
+    <tr>
+      <th>比较</th>
+      <th>ng-template</th>
+      <th>ng-container</th>
+    </tr>
+    <tr>
+      <td>DOM结构</td>
+      <td>有</td>
+      <td>无</td>
+    </tr>
+  </table>
+  <br>
+  <h4 style="color: Crimson">模板引用变量 & 模板输入变量</h4>
+  <table  class="table table-bordered">
+    <tr>
+      <th>比较</th>
+      <th>模板引用变量</th>
+      <th>模板输入变量</th>
+    </tr>
+    <tr>
+      <td> 作用域</td>
+      <td>整个模板</td>
+      <td>单个实例的模板</td>
+    </tr>
+  </table>
 </div>

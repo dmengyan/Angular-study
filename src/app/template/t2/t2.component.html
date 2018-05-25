@@ -1,3 +1,87 @@
-<p>
-  t2 works!
-</p>
+<div class="col-md-8 col-md-offset-2">
+
+  <h3 style="color: Crimson">内置属性型指令</h3><br>
+
+  <p><strong>1. NgClass</strong> - 添加或移除一组 CSS 类。</p>
+  <p><strong>2. NgStyle</strong> - 添加或移除一组 CSS 样式。</p>
+  <p><strong>3. NgModel</strong> - 双向绑定到 HTML 表单元素。</p>
+  <br>
+
+  <h4 style="color: Crimson">1. NgClass </h4>
+
+  <h5 style="color: Crimson">a. Class类绑定  <= 切换单一类名的好办法   ？</h5>
+  <div class="bad curly special"
+       [class]="badCurly">Bad curly</div>
+  <div [class.special]="isSpecial">The class binding is special</div>
+  <div class="special"
+       [class.special]="!isSpecial">This one is not so special</div>
+  <h5 style="color: Crimson">b.NgClass 多个类绑定</h5>
+  <div [ngClass]="currentClasses">多个类绑定</div>
+  <p>currentClasses is {{currentClasses | json}}</p>
+  <br>
+
+  <h4 style="color: Crimson">2. NgStyle </h4>
+
+  <h5 style="color: Crimson">a. 样式绑定</h5>
+  <p [style.font-size]="isSpecial ? '20px' : '16px'" >字体大小根据isSpecial属性而不同</p>
+  <h5 style="color: Crimson">b.NgStyle 多个样式绑定</h5>
+  <span [ngStyle]="currentStyles">多个样式绑定</span>
+  <p>currentStyles is {{ currentStyles | json }}</p>
+  <br>
+
+  <h4 style="color: Crimson">3. NgModel - 使用[(ngModel)]双向绑定到表单元素</h4>
+  <label>without NgModel：
+    <input type="text" [value]="hero.name" (input)="hero.name = $event.target.value" >
+  </label><br>
+  <label> [(ngModel)]：
+    <input type="text" [(ngModel)]="hero.name">
+  </label>
+  <p>heroName: {{ hero.name }}</p>
+  <br>
+
+  <h3 style="color: Crimson">自定义属性型指令 highlight</h3><br>
+
+  <!--<pre appHighlight>Highlight me! 默认值</pre>-->
+  <pre [appHighlight]="'pink'">appHighlight + [highlight] => [appHighlight]</pre>
+  <!-- 给了一个默认值 skyBlue -->
+  <pre [appHighlight]="00">使用默认值颜色</pre>
+  <br>
+
+  <p><strong>1. 新建指令</strong> <code>ng g d highlight</code></p>
+
+  <p><strong>2. 引入</strong> <code>ElementRef</code>
+    -- 构造函数创建私有实例</p>
+
+  <p><strong>3. 访问宿主 DOM 元素</strong>
+   -- 通过调用 <code>ElementRef</code> 的 <code>nativeElement</code> 属性</p>
+  <pre>highlight()方法中：
+    this.elementRef.nativeElement.style.backgroundColor = color;</pre>
+
+  <p><strong>4. 通过响应事件监听</strong>
+    -- 引入<code>HostListener</code>并添加事件处理器</p>
+  <pre>@HostListener&#40;'mouseenter'&#41; onMouseEnter&#40;&#41; &#123;
+    this.highlight&#40;this.highlightColor &#41;;
+  &#125;</pre>
+
+  <p><strong>5. @Input 属性绑定 => 向指令传值</strong></p>
+  <pre>[appHighlight]="'yellow'"
+  @Input() appHighlight: string;</pre>
+  <br>
+
+  <h3 style="color: Crimson">demo</h3><br>
+  <div style="border: 1px dashed #CCCCCC;padding: 20px 40px;">
+    <div class="wukong"><br>
+      <button class="btn btn-default" (click)="big()">变大</button>
+      <button class="btn btn-default" (click)="samll()">变小</button>
+    </div>
+    <br>
+    <div class="block row" [ngStyle]="jgbStyles">
+      <div class="col-sm-2"  style="background-color: #666666"></div>
+      <div class="col-sm-8"  style="background-color: indianred"></div>
+      <div class="col-sm-2"  style="background-color: #666666"></div>
+    </div>
+    <br>
+    <p>jgbStyles is {{ jgbStyles | json }}</p>
+  </div>
+  <br><br><br><br>
+</div>
