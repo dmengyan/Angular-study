@@ -1,3 +1,57 @@
-<p>
-  c3 works!
-</p>
+<div class="container">
+  <div class="col-md-offset-2 col-md-8">
+
+    <h3 style="color: Crimson;">生命周期钩子</h3><br>
+
+    <h4 style="color: Crimson;">组件的生命周期</h4>
+
+    <p>指令和组件的实例有一个生命周期：新建、更新和销毁。</p>
+    <p>Angular 创建它，渲染它，创建并渲染它的子组件，在它被绑定的属性发生变化时检查它，
+      并在它从 DOM 中被移除前销毁它。指令有相同生命周期钩子。</p>
+    <p>调用钩子的方法：ng + 接口名 </p>
+    <br>
+    <h4 style="color: Crimson;">生命周期钩子</h4>
+
+    <table class="table table-bordered">
+      <tr>
+        <th>钩子</th>
+        <th>作用</th>
+      </tr>
+      <tr>
+        <td><code>constructor</code></td>
+        <td>构造函数负责组件类的初始化，处理变量的初始赋值，本质上不算钩子</td>
+      </tr>
+      <tr>
+        <td><code>ngOnInit()</code></td>
+        <td>初始化指令/组件，仅一次，处理业务逻辑</td>
+      </tr>
+      <tr>
+        <td><code>ngOnChanges()</code></td>
+        <td>数据绑定的输入值变化时调用，首次调用在 ngOnInit() 之前</td>
+      </tr>
+      <tr>
+        <td><code>ngDoCheck()</code></td>
+        <td>检测，并在发生 Angular 无法或不愿意自己检测的变化时作出反应。<br>
+          check开销太大，慎用！</td>
+      </tr>
+      <tr>
+        <td><code>ngOnDestroy()</code></td>
+        <td>组件销毁前，比如：处理反订阅，防止内存泄漏；停止定时器</td>
+      </tr>
+      <tr>
+        <td><code>ngAfterViewInit()</code> <br>
+          <code>ngAfterViewChecked()</code></td>
+        <td>初始化完组件视图及其子视图之后调用。<br>
+          使用@ViewChild()访问子视图</td>
+      </tr>
+      <tr>
+        <td> <code>ngAfterContentInit()</code> <br>
+          <code>ngAfterContentChecked()</code></td>
+        <td>外来内容被投影到组件中之后调用。<br>
+          使用@ContentChild()访问“子级内容”</td>
+      </tr>
+    </table>
+
+  </div>
+</div>
+

@@ -1,3 +1,23 @@
-<p>
-  t6 works!
-</p>
+<div class="container">
+  <div class="col-md-offset-2 col-md-8"  [@flyIn]="'active'">
+
+    <h3 style="color: Crimson;">动画</h3>
+
+    <h4 style="color: Crimson;">1. 引入动画相关的模块</h4>
+    <p>app 模块中： 引入 <code>BrowserModule</code> 和 <code>BrowserAnimationsModule</code></p>
+    <p>注意：CLI要先安装动画模块 <code>npm install @angular/animations@latest --save</code></p>
+    <br>
+
+    <h4 style="color: Crimson;">2. 创建动画ts文件</h4>
+    <br>
+
+    <h4 style="color: Crimson;">3. 使用动画</h4>
+    <ul>
+      <li>1. 引入需要的动画</li>
+      <li>2. 元数据 animations: [ flyIn ] </li>
+      <li>3. html中：[@flyIn]="'active'"</li>
+    </ul>
+
+    <br><br>
+  </div>
+</div>

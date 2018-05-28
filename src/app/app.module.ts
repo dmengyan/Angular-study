@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { BaseModule } from './base/base.module';
 import { AppRoutingModule } from './app-routing.module';
+// 动画
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpModule,
     BaseModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule  // 动画
   ],
   bootstrap: [AppComponent]   // 入口组件  Angular通过编程使用bootstrap里声明的AppComponent类型加载组件
   // @NgModule.bootstrap 属性告诉编译器，这里是一个入口组件，它应该生成代码，来使用这个组件引导该应用。

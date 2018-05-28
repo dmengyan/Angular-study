@@ -1,4 +1,6 @@
-<hr>
-<strong>子组件</strong>
+
+<strong>子组件 Input</strong>
 <p>接收父组件的消息：{{ message }}</p>
+<p>通过setter得到的消息：{{ _p }}</p>
+<p>父组件传来的版本号： {{major}}.{{minor}}</p>
 <button class="btn btn-default" (click)="onClick()" >发送给父组件</button>

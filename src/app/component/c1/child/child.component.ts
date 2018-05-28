@@ -1,23 +1,45 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-child',
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.css']
 })
-export class ChildComponent implements OnInit {
+export class ChildComponent implements OnChanges {
   MsgToParent: string;
-  @Input() private message: string;
-  @Output() private  outer = new EventEmitter<string>();
+  @Input() message: string;
+  @Output() outer = new EventEmitter<string>();
+  name = 'Lily';
 
-  constructor() { }
+  // ngOnChange
+  @Input() major: number;
+  @Input() minor: number;
 
-  ngOnInit() {
+  // setter
+  _p: string;
+  @Input()
+  set p(p: string) {
+    this._p = p.replace(/fuck/, '**');
+  }
+  get p(): string { return this._p; }
+
+  ngOnChanges() {
+    console.log('当前版本号：' + this.major + '.' + this.minor);
   }
 
+  // Output
   onClick() {
     // this.MsgToParent = 'This is the message to parent';
     this.outer.emit('This is the message to parent');
+  }
+
+  // 本地变量
+  alert() {
+    alert( '通过本地变量获得子组件的事件');
+  }
+
+  alert2() {
+    alert( '通过@ViewChild()获得子组件的事件');
   }
 
 }

@@ -1,13 +1,115 @@
 <div class="container">
   <div class="col-md-offset-2 col-md-8">
+
     <h3 style="color: Crimson;">父子组件之间的通讯</h3><br>
+
+    <h4 style="color: Crimson;">Input</h4>
+    <p><strong>父组件向子组件传入数据</strong></p>
+    <ul>
+      <li>1. 父组件准备数据</li>
+      <li>2. 父组件数据绑定 < app-hero-child [master]="master" ></li>
+      <li>3. 子组件接收数据 @Input() master: Hero; <br>
+        或 指定别名 @Input('master') masterName: string;</li>
+    </ul>
+    <br>
+
+    <h4 style="color: Crimson;">Output</h4>
+    <p><strong>子组件向父组件传出数据</strong></p>
+    <p>具体思路：<br>
+      子组件暴露一个EventEmitter属性，当事件发生时，子组件利用该属性emits(向上弹射)事件。<br>
+      父组件绑定到这个事件属性，并在事件发生时作出回应。 </p>
+    <ul>
+      <li>1. 子组件定义输出属性 @Output outer = new EventEmitter < string>()</li>
+      <li>2. 向上弹射 onClick()事件中 this.outer.emit('.....')</li>
+      <li>3. 事件绑定 (outer)="recieve($event)" </li>
+      <li>4. 通过传参得到数据 recieve(value: string)方法中，this.MsgFormChild = value;</li>
+    </ul>
+    <br>
+
+    <h4 style="color: Crimson;">本地变量</h4>
+    <p><strong>可以在父组件的 <span style="color: Crimson">模板中</span>直接访问子组件的所有属性和方法</strong></p>
+    <p>局限性：父组件类（ts）的代码对子组件没有访问权</p>
+    <pre>
+      <code>< button (click)="timer.start()">Start< /button>
+      < button (click)="timer.stop()">Stop< /button>
+      < div class="seconds">&#123; &#123; timer.name &#125; &#125;< /div>
+      < app-child #timer>< /app-child>
+    </code></pre>
+    <br>
+
+    <h4 style="color: Crimson;">@ViewChild()</h4>
+    <p><strong>父组件的类读取子组件的属性值或方法 => 把子组件作为 ViewChild，注入到父组件里面</strong></p>
+    <p>需要通过@ViewChild属性装饰器，
+      将子组件CountdownTimerComponent注入到私有属性timerComponent里面，
+      并挂在AfterViewInit生命周期钩子里</p>
+    <pre>
+      <code>export class CountdownViewChildParentComponent implements AfterViewInit &#123;
+          // 将子组件注册为变量timerComponent,记得在括号里写明子组件名字
+          @ViewChild(CountdownTimerComponent)  timerComponent: CountdownTimerComponent;
+            // 通过this.timerComponent访问子组件
+            start() &#123; this.timerComponent.start(); &#125;
+            stop() &#123; this.timerComponent.stop(); &#125;
+       &#125;
+    </code></pre>
+    <br>
+
+    <h4 style="color: Crimson;">通过服务</h4>
+    <p><strong>父组件和它的子组件（们）共享同一个服务，利用该服务在父子组件之间实现双向通讯。</strong></p>
+    <p>该服务实例的作用域被限制在父组件和其子组件（们）内。这个组件子树之外的组件将无法访问该服务或者与它们通讯。</p>
+    <br>
+
+    <h3 style="color: Crimson;">截听输入属性值的变化</h3><br>
+
+    <h4 style="color: Crimson;">setter 监听单个</h4>
+    <p><strong>父组件传值到子组件，子组件监听并处理得到的值</strong></p>
+    <p>局限性：不适合监听多个值</p>
+    <pre>
+      <code>_p: string;
+      @Input()
+      set p(p: string) &#123;
+        this._p = p.replace(/fuck/, '**');
+      &#125;
+      get p(): string &#123;return this._p; &#125;
+    </code></pre>
+    <br>
+
+    <h4 style="color: Crimson;">ngOnChanges() 监听多个</h4>
+    <p><strong>父组件传值到子组件，子组件监听父组件值的变化</strong></p>
+    <p>局限性：可以监听多个值</p>
+    <pre>
+      <code>
+    </code></pre>
+    <br>
+
+
+    <h4 style="color: Crimson;">demo</h4><br>
     <div style="border: 1px dashed #CCCCCC;padding: 20px 40px;">
 
-      <strong>父组件</strong>
+      <app-child [message]="MsgToChild" [p]="Psetter" (outer)="recieve($event)"
+                 [major]="major" [minor]="minor" #child></app-child>
+      <br><hr>
+
+      <strong>父组件 Output</strong>
       <p>接收子组件传来的消息：{{ MsgFormChild }}</p>
+      <hr>
 
-      <app-child [message]="MsgToChild" (outer)="recieve($event)"></app-child>
+      <p><strong>通过本地变量交互</strong></p>
+      <p>得到子组件的属性值： {{ child.name}} </p>
+      <button class="btn btn-default" (click)="child.alert()">点击得到子组件的事件</button>
+      <br><hr>
 
+      <p><strong>通过@ViewChild()交互</strong></p>
+      <p>得到子组件的属性值： {{ viewChildMsg }}</p>
+      <button class="btn btn-default" (click)="get()">点击得到子组件的事件</button>
+      <br><hr>
+
+      <p><strong>通过ngOnChanges()截听输入属性值的变化</strong></p>
+      <button class="btn btn-default" (click)="newMajor()">升级主版本</button>
+      <button class="btn btn-default" (click)="newMinor()">升级子版本</button>
+
+      <br>
     </div>
+    <br><br>
+
   </div>
 </div>

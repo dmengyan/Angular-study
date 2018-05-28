@@ -1,3 +1,92 @@
-<p>
-  t5 works!
-</p>
+<div class="container">
+  <div class="col-md-offset-2 col-md-8">
+
+    <h4 style="color: Crimson;display: inline-block">管道 </h4>
+    <span> -- 处理转换得到的数据</span>
+    <br><br>
+
+    <h4 style="color: Crimson;">使用管道: </h4>
+    <p><strong>在html中：</strong></p>
+    <ul>
+      <li>1. 普通使用： &#123; &#123; name | date &#125; &#125;</li>
+      <li>2. 链式管道： &#123; &#123; name | date | uppercase &#125; &#125; </li>
+      <li>3. 传参管道： &#123; &#123; name | date: "fullDate" &#125; &#125;</li>
+    </ul>
+    <p><strong>在ts中：</strong></p>
+    <p>类似服务的使用</p>
+    <br>
+
+    <h4 style="color: Crimson;">内置管道</h4>
+    <table class="table table-bordered">
+      <tr>
+        <th>管道</th>
+        <th>用途</th>
+      </tr>
+      <tr>
+        <td><code>date</code></td>
+        <td>格式化时间 不推荐 date:'y/m/n' （多语言会死）=> date: 'shortDate'</td>
+      </tr>
+      <tr>
+        <td><code>json</code></td>
+        <td>转换成json字符串，缩进两个空格</td>
+      </tr>
+      <tr>
+        <td><code>async</code></td>
+        <td>把可订阅的数据转换成数据，然后放到界面上显示</td>
+      </tr>
+      <tr>
+        <td><code>slice</code></td>
+        <td>截取字符串 slice : x : y， -- {{ '123456' | slice: 1:4 }} </td>
+      </tr>
+      <tr>
+        <td><code>uppercase</code></td>
+        <td>大写 </td>
+      </tr>
+      <tr>
+        <td><code>lowercase</code></td>
+        <td>小写 </td>
+      </tr>
+      <tr>
+        <td><code>titlecase</code></td>
+        <td>首字母大写  -- {{ 'happy coding ' | titlecase }}  </td>
+      </tr>
+      <tr>
+        <td><code>number</code></td>
+        <td>格式化数字  -- {{ 1 | number: '3.0' }} {{ 1 | number: '1.3' }} </td>
+      </tr>
+      <tr>
+        <td><code>percent</code></td>
+        <td>百分比转换   -- {{ 0.2 | percent }} </td>
+      </tr>
+      <tr>
+        <td><code>currency</code></td>
+        <td>货币转换  -- {{ 80 | currency }}   </td>
+      </tr>
+      <tr>
+        <td><code>i18n</code></td>
+        <td>多语言转换 -- 参看i18n模块  </td>
+      </tr>
+    </table>
+    <br>
+
+    <h4 style="color: Crimson;">自定义管道</h4>
+    <p>1. 新建管道</p>
+    <p>2. 编写 transform 方法， 返回值</p>
+    <p>3. 使用自定义管道</p>
+    <br>
+
+    <h4 style="color: Crimson;">demo</h4>
+
+    <div style="border: 1px dashed #CCCCCC;padding: 20px 40px;">
+      <p>计算 x <sup>y</sup> 的值 ， <br><br> 例如： 2 <sup>10</sup> 返回值为 {{ 2 | exponent: 10  }}</p>
+    </div>
+
+    <br>
+
+    <h4 style="color: Crimson;">管道的变更检测</h4>
+    <br>
+      ？？？
+    <br>
+    <br>
+  </div>
+</div>
