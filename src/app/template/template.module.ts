@@ -13,6 +13,7 @@ import { T8Component } from './t8/t8.component';
 import { HighlightDirective } from './t2/highlight.directive';
 import { UnlessDirective } from './t1/unless.directive';
 import { ExponentPipe } from './t5/exponent.pipe';
+import { SizeDirective } from './t2/size.directive';
 
 @NgModule({
   imports: [
@@ -20,7 +21,19 @@ import { ExponentPipe } from './t5/exponent.pipe';
     TemplateRoutingModule,
     FormsModule
   ],
-  declarations: [ T1Component, T2Component, T3Component, T4Component,
-    T5Component, T6Component, T7Component, T8Component, HighlightDirective, UnlessDirective, ExponentPipe]
+  declarations: [
+    T1Component,
+    T2Component,
+    T3Component,
+    T4Component,
+    T5Component,
+    T6Component,
+    T7Component,
+    T8Component,
+    HighlightDirective,
+    UnlessDirective,
+    SizeDirective,
+    ExponentPipe
+  ]
 })
 export class TemplateModule { }

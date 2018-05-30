@@ -18,6 +18,8 @@ export class T2Component implements OnInit {
   // 自定义指令 高亮
   color: string;
 
+  jgbSize:string;//金箍棒大小
+
   // demo
   jgbStyles: {};
 
@@ -54,12 +56,19 @@ export class T2Component implements OnInit {
     this.isBig = true;
     this.setJgbStyles();
   }
+  smaller() {
+	  // console.log('smaller','samller smaller');
+    this.jgbSize = 'false' + (new Date()); // 金箍棒请变小
+  }
+  bigger() {
+	  // console.log('big1','big1 big1');
+    this.jgbSize = 'true' + (new Date()); // 金箍棒请变大
+  }
   samll() {
     this.isLong = false;
     this.isBig = false;
     this.setJgbStyles();
   }
-
   setJgbStyles() {
     this.jgbStyles = {
       'width': this.isLong ? '600px' : '200px',

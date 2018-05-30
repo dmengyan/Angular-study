@@ -16,6 +16,7 @@ const appRoutes: Routes = [
   { path: 'service', loadChildren: './service/service.module#ServiceModule' },          // 服务
   { path: 'di', loadChildren: './di/di.module#DiModule' },                              // 依赖注入
   { path: 'http', loadChildren: './http/http.module#HttpModule' },                      // Http
+  { path: 'other', loadChildren: './other/other.module#OtherModule' },                  // 其他相关知识
 ];
 
 @NgModule({

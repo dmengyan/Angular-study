@@ -11,8 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent   // 这里不是入口组件，虽然我们会在index.html里使用组件的selector<app-root></app-root>的位置，
-    // 但是Angular并不是根据此selector来加载AppComponent。这是容易让人误解的地方。因为index.html不属于任何组件模板
+    // 这里不是入口组件，虽然我们会在index.html里使用组件的selector<app-root></app-root>的位置，
+    // 但是Angular并不是根据此selector来加载AppComponent。这是容易让人误解的地方。因为index.html不属于任何组件模板,
+    AppComponent
   ],
   imports: [
     BrowserModule,

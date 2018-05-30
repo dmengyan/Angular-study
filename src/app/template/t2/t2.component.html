@@ -74,8 +74,13 @@
       <button class="btn btn-default" (click)="big()">变大</button>
       <button class="btn btn-default" (click)="samll()">变小</button>
     </div>
-    <br>
-    <div class="block row" [ngStyle]="jgbStyles">
+    <div class="wukong1"><br>
+      <button class="btn btn-default" (click)='bigger()'>变大1</button>
+	  <button class="btn btn-default" (click)='smaller()'>变小1</button>
+    </div>
+
+	<br>
+    <div class="block row" [ngStyle]="jgbStyles" [appSize]='jgbSize'>
       <div class="col-sm-2"  style="background-color: #666666"></div>
       <div class="col-sm-8"  style="background-color: indianred"></div>
       <div class="col-sm-2"  style="background-color: #666666"></div>

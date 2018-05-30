@@ -1,0 +1,132 @@
+<div class="col-md-8 col-md-offset-2">
+
+  <h4 style="color: Crimson">TypeScript 中的 类：</h4><br>
+  <h4 style="color: Crimson">1. 封装</h4>
+  <p>也就是创建一个类，把共用的属性方法集合起来。</p>
+  <pre><code>class Car &#123;
+    engine: string;
+    constructor(engine: string) &#123;
+        this.engine = engine;
+    &#125;
+    drive(distanceInMeters: number = 0) &#123;
+        console.log(`A car runs $&#123; distanceInMeters &#125;m powered by` + this.engine);
+    &#125;
+&#125;</code></pre>
+  <p>实例化一个Car的对象，通过执行构造函数对其初始化。</p>
+  <pre><code>let car = new Car('petrol');
+car.drive(100);</code></pre>
+  <br>
+  <h4 style="color: Crimson">2. 继承</h4>
+  <p>使用 extends 关键字即可方便地实现继承。</p>
+  <p>子类的构造函数必须调用super()，它会执行的父类的构造方法。</p>
+  <pre><code>class Child extends Parent &#123;
+  constructor(engine: string) &#123;
+    super(engine);
+   &#125;
+ &#125;</code></pre>
+  <br>
+
+  <h4 style="color: Crimson">3. 多态</h4>
+  <p>在继承的基础上，子类丰富或修改属性方法。</p>
+  <p>Jeep 的类重写了父类 drive() 方法，这样 drive() 方法在不同的类中就具有不同的功能，这就是多态。</p>
+  <pre><code>export  class Jeep extends Car &#123;
+  constructor(engine: string) &#123;
+    super(engine);
+  &#125;
+  driven(distance: number = 100 ) &#123;
+    console.log('Jeep ...');
+    return super.driven(distance);
+  &#125;
+&#125;</code></pre>
+  <br>
+
+  <h4 style="color: Crimson">存取器  getter & setter</h4>
+  <p>改变属性的读取和赋值行为</p>
+  <pre><code>export class Animal &#123;
+  constructor(name: string) &#123;
+    this.name = name;
+  &#125;
+  get name() &#123;
+    return '动物';
+  &#125;
+  set name(value) &#123;
+    console.log( 'setter:' + value );
+  &#125;
+&#125;
+
+const a = new Animal('Kitty'); // setter: Kitty
+a.name = 'Tom';                // setter: Tom
+console.log(a.name);           // Jack
+  </code></pre>
+  <br>
+
+  <h4 style="color: Crimson">静态属性 static</h4>
+  <p>类的静态成员存在于类本身，而不是类的实例上，我们使用 类名. 来访问静态属性。</p>
+  <pre><code>export class Cat &#123;
+  static age = 1;
+  name: string;
+  static isCat(a) &#123;
+    console.log(a instanceof Cat);
+  &#125;
+  constructor(name: string) &#123;
+    this.name = name;
+  &#125;
+&#125;
+
+const miao = new Cat('miaomiao');
+Cat.isCat(miao);      // ture
+console.log(Cat.age); // 1
+// miao.isCat(miao);  // 报错 实例不能调用
+  </code></pre>
+  <br>
+
+  <h4 style="color: Crimson">修饰符</h4>
+  <table class="table table-bordered">
+    <tr>
+      <th>修饰符</th>
+      <th>使用</th>
+    </tr>
+    <tr>
+      <td>public</td>
+      <td>公有的，可以在任何地方被访问到，默认所有的属性和方法都是 public 的</td>
+    </tr>
+    <tr>
+      <td>private</td>
+      <td>为在声明它的类所私有 <br>
+        在TypeScript 编译之后的代码中，并没有限制 private 属性在外部的可访问性。</td>
+    </tr>
+    <tr>
+      <td>protected</td>
+      <td>在该类及其子类中使用</td>
+    </tr>
+  </table>
+  <br>
+
+  <h4 style="color: Crimson">抽象类</h4>
+  <p>abstract 用于定义抽象类和其中的抽象方法。</p>
+  <p>抽象类是不允许被实例化; 但它的抽象方法必须被子类实现。</p>
+  <pre><code>abstract class Human &#123;
+  name: string;
+  constructor(name: string) &#123;
+    this.name = name;
+  &#125;
+  abstract like();
+&#125;
+
+export class Woman &#123;
+  name: string;
+  constructor(name: string) &#123;
+    this.name = name;
+  &#125;
+  like(thing: string) &#123;
+    console.log(this.name + ' likes to ' + thing);
+  &#125;
+&#125;
+
+const alice = new Woman('Alice');
+alice.like('shoping');   // Alice likes to shoping
+  </code></pre>
+
+  <br><br>
+
+</div>
