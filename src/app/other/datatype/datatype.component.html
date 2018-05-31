@@ -1,0 +1,146 @@
+<div class="col-md-8 col-md-offset-2">
+
+  <h3 style="color: Crimson">TypeScript 中的 数据类型：</h3><br>
+
+  <h4 style="color: Crimson">1. 布尔值 Boolean</h4>
+  <p>注意，使用构造函数 Boolean 创造的对象不是布尔值,</p>
+  <p>事实上 new Boolean() 返回的是一个 Boolean 对象</p>
+  <br>
+
+  <h4 style="color: Crimson">2. 数值 Number</h4>
+  <p>和JavaScript,TypeScript里的所有数字都是浮点数。  <br>
+    js支持十进制和十六进制字面量，Typescript还二进制和八进制字面量。</p>
+  <br>
+
+  <h4 style="color: Crimson">3. 字符串 String</h4>
+  <p>其中 ` ` 用来定义 ES6 中的模板字符串，$&#123; &#125; 来嵌入表达式。</p>
+  <br>
+
+  <h4 style="color: Crimson">4. 空值 Void</h4>
+  <p>JavaScript 没有空值（Void），在 TypeScirpt 中，void 表示没有任何返回值的函数。</p>
+  <br>
+
+  <h4 style="color: Crimson">5. Null 和 Undefined</h4>
+  <pre><code>  let u: undefined = undefined;  // undefined 只能 = undefined
+  let n: null = null;  // null 只能 = null
+  let u: undefined;
+  let num: number = u;  //undefined 类型的变量，可以赋值给 number 类型的变量</code></pre>
+  <p>与 void 的区别是，undefined 和 null 是所有类型的子类型。</p>
+  <br>
+
+  <h4 style="color: Crimson">6. 任意值 Any</h4>
+  <p>变量声明时，未指定类型，默认为 Any。</p>
+  <p>声明为任意值的变量，返回的内容的类型也是任意值。</p>
+  <pre><code>  let notSure: any;
+  notSure = 666;
+
+  let list: any[] = [1, true, "free"];
+  list[1] = 100;</code></pre>
+  <br>
+
+  <h4 style="color: Crimson">7. 对象类型 Object 【非原始类型】</h4>
+  <p>使用object类型，就可以更好的表示像Object.create这样的API。</p>
+  <pre><code>declare function create(o: object | null): void;
+
+create(&#123; prop: 0 &#125;); // OK
+create(null); // OK
+
+create(42); // Error
+create("string"); // Error
+create(false); // Error
+create(undefined); // Error</code></pre>
+  <br>
+
+  <h4 style="color: Crimson">8. 数组 Array</h4>
+  <p>有两种方式可以定义数组:</p>
+  <pre><code>  方法1：
+  let list: number[] = [1, 2, 3];
+  方法2：
+  let list: Array< number> = [1, 2, 3];</code></pre>
+  <br>
+
+  <hr>
+  <br>
+  <h4 style="color: Crimson">7. 元组 Tuple</h4>
+  <p>数组 : 合并相同类型的对象 ; <br>
+    元组 : 合并不同类型的对象。</p>
+  <pre><code>tuple: [string, number, boolean] = ['12345', 123, true <span style="color: Crimson">, 666, 'lalala' </span>];</code></pre>
+  <p>红色的是<span style="color: Crimson">越界的元素</span>，类型是<span style="color: Crimson">联合类型</span>，即 string | number | boolean，多种类型中的一种。<br>
+    如果一个值是联合类型，我们只能访问此联合类型的所有类型里共有的属性或方法。</p>
+  <br>
+
+  <h4 style="color: Crimson">8. 枚举 Enum</h4>
+  <p>定义一些带名字的常量。 清晰地表达意图或创建一组有区别的用例。 <br>
+    TypeScript支持数字的和基于字符串的枚举</p>
+  <h5 style="color: Crimson">数字枚举</h5>
+  <pre><code>enum Direction &#123;
+    Up = 1,  // 不设初始值的话 = 0
+    Down,    // 依次 + 1
+    Left,
+    Right
+&#125;</code></pre>
+  <h5 style="color: Crimson">字符串枚举</h5>
+  <pre><code>enum Direction &#123;
+    Up = "UP",
+    Down = "DOWN",
+    Left = "LEFT",
+    Right = "RIGHT",
+&#125;</code></pre>
+  <h5 style="color: Crimson">常数项和计算所得项</h5>
+  <table class="table table-bordered">
+    <tr>
+      <th>区分</th>
+      <th>常数项</th>
+      <th>计算所得项</th>
+    </tr>
+    <tr>
+      <td>1.定义</td>
+      <td>常数或者通过一元二元计算得到的</td>
+      <td>类似异步得到的，比如：Red = "red".length</td>
+    </tr>
+    <tr>
+      <td>2.顺序</td>
+      <td>随意</td>
+      <td>不能放在常数项前面，会报错</td>
+    </tr>
+  </table>
+  <h5 style="color: Crimson">常数枚举</h5>
+  <p>常数枚举与普通枚举的区别是，它会在编译阶段被删除，并且不能包含计算成员。</p>
+  <pre><code><strong>const</strong> enum Direction &#123;
+    Up,
+    Down,
+    Left,
+    Right,
+&#125;</code></pre>
+  <h5 style="color: Crimson">外部枚举</h5>
+  <p>declare 定义的类型只会用于编译时的检查，编译结果中会被删除。</p>
+  <pre><code><strong>declare</strong> enum Direction &#123;
+    Up,
+    Down,
+    Left,
+    Right,
+&#125;</code></pre>
+  <h5>使用时：</h5>
+  <pre><code>console.log(Direction.up, Direction.down, Direction.left, Direction.right);</code></pre>
+  <br>
+
+  <h4 style="color: Crimson">类型推论</h4>
+  <p>定义时没赋值，之后都会被推断成 any 类型，不检查类型。</p>
+  <pre><code>let myFavoriteNumber;
+myFavoriteNumber = 'seven';
+myFavoriteNumber = 7;   // 此时正常 </code></pre>
+  <p>定义时赋值, 会推测数据的类型，之后不能改。</p>
+  <pre><code>let myFavoriteNumber = 'seven';   // 类型推测为 string
+myFavoriteNumber = 7;   // 此时报错</code></pre>
+  <p><span style="color: Crimson">联合类型</span>的变量在被赋值的时候，会根据类型推论的规则推断出一个类型:</p>
+  <pre><code>let myFavoriteNumber: string | number;
+myFavoriteNumber = 'seven';
+console.log(myFavoriteNumber.length); // 5
+myFavoriteNumber = 7;
+console.log(myFavoriteNumber.length); // 编译时报错
+</code></pre>
+
+
+  <br><br>
+
+</div>

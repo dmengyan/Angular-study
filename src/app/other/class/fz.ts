@@ -117,8 +117,8 @@ export class Inorganic extends Material {
 }
 // 生物
 export class Biology extends Material {
-  // static lifecycle = '0-100';
-  lifecycle = '0-100';
+  // static lifecycle = '120';
+  lifecycle = 120;
   constructor(name: string) {
     super(name);
   }
@@ -169,9 +169,15 @@ export class Pet extends Animals {
 // 猫
 export class Cats extends Pet {
   master: string;
+  lifecycle = 15;
+  weight = 1;
+  height = 1;
   constructor(name: string, master: string) {
     super(name);
     this.master = master;
+  }
+  said() {
+    console.log(this.name + ' said 喵喵');
   }
 }
 // 狗
@@ -181,6 +187,9 @@ export class Dog extends Pet {
     super(name);
     this.master = master;
   }
+  said() {
+    console.log(this.name + ' said 汪汪');
+  }
 }
 // 鸟
 export class Bird extends Pet {
@@ -189,6 +198,9 @@ export class Bird extends Pet {
     super(name);
     this.master = master;
   }
+  said() {
+    console.log(this.name + ' said 唧唧');
+  }
 }
 // 兔
 export class Rabbit extends Pet {
@@ -196,5 +208,8 @@ export class Rabbit extends Pet {
   constructor(name: string, master: string) {
     super(name);
     this.master = master;
+  }
+  said() {
+    console.log(this.name + ' said nothing');
   }
 }

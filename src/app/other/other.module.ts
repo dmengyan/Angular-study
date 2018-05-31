@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { OtherRoutingModule } from './other-routing.module';
 import { ClassComponent } from './class/class.component';
+import { DatatypeComponent } from './datatype/datatype.component';
+import { VarComponent } from './var/var.component';
 
 @NgModule({
   imports: [
     CommonModule,
     OtherRoutingModule
   ],
-  declarations: [ClassComponent]
+  declarations: [ClassComponent, DatatypeComponent, VarComponent]
 })
 export class OtherModule { }

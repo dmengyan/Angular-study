@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Car, MotoCar, Jeep, Animal, Cat, Woman, Biology, Animals, Rabbit } from './fz';
+import { Car, MotoCar, Jeep, Animal, Cat, Woman, Biology, Animals, Rabbit, Cats, Dog, Bird } from './fz';
 
 @Component({
   selector: 'app-class',
@@ -47,6 +47,21 @@ export class ClassComponent implements OnInit {
     console.log(tutu.master);
     console.log(tutu.lifecycle);
 
+    // 宠物添加方法
+    const white = new Cats('毛球', '灵儿');
+    white.said();
+    const hh = new Dog('欢欢', '灵儿');
+    hh.said();
+    const bird = new Bird('彩儿', '灵儿');
+    bird.said();
+    const ff = new Rabbit('菲菲', '灵儿');
+    ff.said();
+
+    for ( let i = 0; i < white.lifecycle; i++ ) {
+      setTimeout(function () {
+        console.log(white.name + i + '岁时，体重为' + white.weight + ',身长为' + white.height );    // 0 1 2 ...
+      }, 100 * i);
+    }
   }
 
 
