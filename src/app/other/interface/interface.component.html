@@ -1,0 +1,62 @@
+<div class="col-md-8 col-md-offset-2">
+
+  <h3 style="color: Crimson">接口：</h3><br>
+  <h4 style="color: Crimson">用法1：定义对象的类型</h4><br>
+  如下：
+  <pre><code>interface Person &#123;
+      name: string;
+      age: number;
+  &#125;
+
+  let tom: Person = &#123;
+      name: 'Tom',
+      age: 25
+  &#125;</code></pre>
+  <p>对新对象赋值时，形状保持一致，不多不少。</p>
+  <strong>想少？</strong>
+  <pre><code> age?: number;</code></pre>
+  <strong>想多？</strong>
+  <pre><code>  [propName: string]: <span style="color: Crimson">string</span>;   // 任意属性
+
+  age: 25;           // 此时报错，只能是string
+  原因是联合类型的类型推断限制。
+  <span style="color: Crimson">任意属性的类型，也限制了可选属性的类型，</span>必须是任意属性类型的子类型。</code></pre>
+  <strong>不能改？</strong>
+  <pre><code>  readonly id: number;
+  实例中：
+  id: 23;
+  obj.id = 25;  // 此时报错 对象赋值后不可改</code></pre>
+
+  <br>
+  <h4 style="color: Crimson">用法2：提取不同类的共享方法</h4><br>
+  <p>1. 接口的定义和实现：</p>
+  <pre><code>interface Alarm &#123;
+    alert();
+&#125;
+// 类<span style="color: Crimson">实现</span>接口
+class Car <span style="color: Crimson">implements</span> Alarm &#123;
+    alert() &#123;
+        console.log('Car alert');
+    &#125;
+&#125;</code></pre>
+  <p>2. 接口的继承：<br>
+    接口可以继承类和接口：<code>interface 接口B extends 类/接口A</code></p>
+
+  <br>
+  <hr>
+  <br>
+
+  <h4 style="color: Crimson">使用接口定义数组：</h4>
+  <pre><code>interface NumberArray &#123;
+    [index: number]: number;
+  &#125;</code></pre>
+  <br>
+
+  <h4 style="color: Crimson">函数的重载：</h4>
+
+
+
+
+
+
+</div>
