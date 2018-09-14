@@ -6,12 +6,21 @@ import { ClassComponent } from './class/class.component';
 import { DatatypeComponent } from './datatype/datatype.component';
 import { VarComponent } from './var/var.component';
 import { InterfaceComponent } from './interface/interface.component';
+import { EchartsComponent } from './echarts/echarts.component';
+
+// 引入echarts模块
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   imports: [
     CommonModule,
-    OtherRoutingModule
+    OtherRoutingModule,
+   //  NgxEchartsModule
   ],
-  declarations: [ClassComponent, DatatypeComponent, VarComponent, InterfaceComponent]
+  declarations: [ClassComponent, DatatypeComponent, VarComponent, InterfaceComponent, EchartsComponent]
 })
 export class OtherModule { }
+
+
+
+
